@@ -7,18 +7,20 @@
     <thead>
         <tr>
             <th>No</th>
+            <th>Date</th>
             <th>Outlet</th>
-            <th>Area</th>
-            <th>District</th>
+            <th>Rating</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
-@foreach ($outlets as $outlet)
+@foreach ($surveys as $survey)
 <tr>
     <td>{{ $loop->iteration }}</td>
-    <td>{{ $outlet->name }}</td>
-    <td>{{ $outlet->area->name }}</td>
-    <td>{{ $outlet->area->district->name }}</td>
+    <td>{{ $survey->date }}</td>
+    <td>{{ $survey->outlet->name }}</td>
+    <td>{{ $survey->rating }}</td>
+    <td>{{ $survey->description }}</td>
 </tr>
 @endforeach
 </tbody>

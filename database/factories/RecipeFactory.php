@@ -17,7 +17,6 @@ class RecipeFactory extends Factory
     public function definition(): array
     {
         return [
-            'outlet_id' => mt_rand(1, 600),
             'name' => fake()->sentence(mt_rand(2, 4)),
             'making' => fake()->paragraph(mt_rand(20, 40)),
             'serving' => fake()->paragraph(mt_rand(20, 40))

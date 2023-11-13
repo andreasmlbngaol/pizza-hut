@@ -12,9 +12,5 @@ class Recipe extends Model
 
     
     protected $guarded = ['id'];
-    protected $with = ['outlets'];
     
-    public function outlets() {
-        return $this->belongsToMany(Outlet::class);
-    }
 }

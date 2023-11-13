@@ -7,18 +7,18 @@
     <thead>
         <tr>
             <th>No</th>
-            <th>Outlet</th>
-            <th>Area</th>
-            <th>District</th>
+            <th>Name</th>
+            <th>Way of Making</th>
+            <th>Way of Serving</th>
         </tr>
     </thead>
     <tbody>
-@foreach ($outlets as $outlet)
+@foreach ($recipes as $recipe)
 <tr>
     <td>{{ $loop->iteration }}</td>
-    <td>{{ $outlet->name }}</td>
-    <td>{{ $outlet->area->name }}</td>
-    <td>{{ $outlet->area->district->name }}</td>
+    <td>{{ $recipe->name }}</td>
+    <td>{{ $recipe->making }}</td>
+    <td>{{ $recipe->serving }}</td>
 </tr>
 @endforeach
 </tbody>

@@ -21,6 +21,7 @@ class SellingFactory extends Factory
         $surplus = $income - $cost;
         return [
             'date' => fake()->date(),
+            'outlet_id' => mt_rand(1, 500),
             'delivery' => mt_rand(500, 1000),
             'dine_in' => mt_rand(500, 1000),
             'cost' => $cost,

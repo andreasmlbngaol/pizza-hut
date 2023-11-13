@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Area;
+use App\Models\User;
 use App\Models\Recipe;
 use App\Models\Survey;
 use App\Models\Account;
@@ -29,11 +30,7 @@ class Outlet extends Model
         return $this->hasMany(Survey::class);
     }
 
-    public function recipes() {
-        return $this->hasMany(Recipe::class);
-    }
-
-    public function account() {
-        return $this->hasOne(Account::class);
+    public function user() {
+        return $this->hasOne(User::class);
     }
 }

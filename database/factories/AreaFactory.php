@@ -18,7 +18,7 @@ class AreaFactory extends Factory
     {
         return [
             'name' => fake()->city(),
-            'district_id' => mt_rand(1, 38)
+            'district_id' => mt_rand(1, 30)
         ];
     }
 }

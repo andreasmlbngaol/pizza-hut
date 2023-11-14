@@ -18,8 +18,8 @@ class RecipeFactory extends Factory
     {
         return [
             'name' => fake()->sentence(mt_rand(2, 4)),
-            'making' => fake()->paragraph(mt_rand(20, 40)),
-            'serving' => fake()->paragraph(mt_rand(20, 40))
+            'making' => fake()->paragraph(mt_rand(3, 5)),
+            'serving' => fake()->paragraph(mt_rand(3, 5))
         ];
     }
 }

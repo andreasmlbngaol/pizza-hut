@@ -21,14 +21,37 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        District::factory(38)->create();
+        District::factory(30)->create();
         Area::factory(100)->create();
         Outlet::factory(600)->create();
         User::factory(600)->create();
         Employee::factory(2000)->create();
-        Position::factory(10)->create();
+        $positions = [
+            ['name' => 'Team Member'],
+            ['name' => 'Server'],
+            ['name' => 'Delivery Driver'],
+            ['name' => 'Cook'],
+            ['name' => 'Shift Manager'],
+            ['name' => 'Assistant Manager'],
+            ['name' => 'General Manager'],
+            ['name' => 'Area Coach'],
+            ['name' => 'Above Restaurant Leader']
+        ];
+        foreach($positions as $position) {
+            Position::create($position);
+        }
         Recipe::factory(30)->create();
         Selling::factory(2000)->create();
         Survey::factory(2000)->create();
+        
+        // Admin
+        Outlet::create([
+            'name' => 'Admin',
+            'area_id' => '1',
+        ]);
+        User::create([
+            'username' => 'admin',
+            'password' => bcrypt('admin')
+        ]);
     }
 }

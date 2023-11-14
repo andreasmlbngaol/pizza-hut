@@ -22,36 +22,66 @@ use App\Http\Controllers\EmployeeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'title' => 'Home',
+        'user' => Outlet::where('id', '=', auth()->user()->id)->first(),
+        'active' => 'Home'
+    ]);
 })->middleware('auth'); 
 
 Route::get('/outlets', function () {
     return view('outlets', [
-        'outlets' => Outlet::orderBy('area_id')->get()
+        'outlets' => Outlet::orderBy('name')->get(),
+        'title' => 'Outlets', 
+        'active' => 'Outlets'
     ]);
-})->middleware('auth'); 
+}); 
 
 Route::get('/employees', function () {
+    if(auth()->user()->username !== 'admin') {
+        $employees = Employee::where('outlet_id', '=', auth()->user()->id)->orderBy('name')->get();
+    } else {
+        $employees = Employee::orderBy('name')->get();
+    }
     return view('employees', [
-        'employees' => Employee::where('outlet_id', '=', auth()->user()->id)->orderBy('name')->get()
+        'employees' => $employees,
+        'title' => 'Employees', 
+        'active' => 'Employees'
     ]);
 })->middleware('auth'); 
 
 Route::get('/recipes', function () {
     return view('recipes', [
-        'recipes' => Recipe::orderBy('name')->get()
+        'recipes' => Recipe::orderBy('name')->get(),
+        'title' => 'Recipes', 
+        'active' => 'Recipes'
     ]);
 })->middleware('auth'); 
 
 Route::get('/sellings', function () {
+    if(auth()->user()->username !== 'admin') {
+        $sellings = Selling::where('outlet_id', '=', auth()->user()->id)->orderBy('date')->get();
+    } else {
+        $sellings = Selling::orderBy('surplus', 'desc')->get();
+    }
     return view('sellings', [
-        'sellings' => Selling::where('outlet_id', '=', auth()->user()->id)->orderBy('date')->get()
+        'username' => auth()->user()->username,
+        'sellings' => $sellings,
+        'title' => 'Sellings', 
+        'active' => 'Sellings'
     ]);
 })->middleware('auth'); 
 
 Route::get('/surveys', function () {
+    if(auth()->user()->username !== 'admin') {
+        $surveys = Survey::where('outlet_id', '=', auth()->user()->id)->orderBy('date')->get();
+    } else {
+        $surveys = Survey::orderBy('rating', 'desc')->get();
+    }
     return view('surveys', [
-        'surveys' => Survey::where('outlet_id', '=', auth()->user()->id)->orderBy('date')->get()
+        'surveys' => $surveys,
+        'title' => 'Surveys', 
+        'active' => 'Surveys'
     ]);
 })->middleware('auth'); 
 

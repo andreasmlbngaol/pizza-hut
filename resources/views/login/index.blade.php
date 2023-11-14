@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('main')
-<div class="row justify-content-center">
+<div class="row justify-content-center mt-5">
     <div class="col-sm-4">
         @if(session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -36,7 +36,7 @@
                     {{ $message }}
                 </div>
                 @enderror
-                <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Login</button>
+                <button class="w-100 btn btn-lg btn-danger mt-3" type="submit">Login</button>
             </form>
         </main>
     </div>

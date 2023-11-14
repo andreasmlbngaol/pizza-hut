@@ -8,9 +8,8 @@
         <tr>
             <th>No</th>
             <th>Date</th>
-            <th>Outlet</th>
             <th>Rating</th>
-            <th>Description</th>
+            <th style="width: 60%;">Description</th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +17,6 @@
 <tr>
     <td>{{ $loop->iteration }}</td>
     <td>{{ $survey->date }}</td>
-    <td>{{ $survey->outlet->name }}</td>
     <td>{{ $survey->rating }}</td>
     <td>{{ $survey->description }}</td>
 </tr>

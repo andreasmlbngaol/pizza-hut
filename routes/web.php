@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Outlet;
 use App\Models\Recipe;
 use App\Models\Survey;
@@ -7,8 +8,6 @@ use App\Models\Selling;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\OutletController;
-use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +23,14 @@ use App\Http\Controllers\EmployeeController;
 Route::get('/', function () {
     return view('welcome', [
         'title' => 'Home',
-        'user' => Outlet::where('id', '=', auth()->user()->id)->first(),
+        'user' => User::where('id', '=', auth()->user()->id)->first(),
         'active' => 'Home'
     ]);
 })->middleware('auth'); 
 
 Route::get('/outlets', function () {
     return view('outlets', [
-        'outlets' => Outlet::orderBy('name')->get(),
+        'users' => User::orderBy('area_id')->orderBy('name')->get(),
         'title' => 'Outlets', 
         'active' => 'Outlets'
     ]);
@@ -39,7 +38,7 @@ Route::get('/outlets', function () {
 
 Route::get('/employees', function () {
     if(auth()->user()->username !== 'admin') {
-        $employees = Employee::where('outlet_id', '=', auth()->user()->id)->orderBy('name')->get();
+        $employees = Employee::where('user_id', '=', auth()->user()->id)->orderBy('name')->get();
     } else {
         $employees = Employee::orderBy('name')->get();
     }
@@ -60,7 +59,7 @@ Route::get('/recipes', function () {
 
 Route::get('/sellings', function () {
     if(auth()->user()->username !== 'admin') {
-        $sellings = Selling::where('outlet_id', '=', auth()->user()->id)->orderBy('date')->get();
+        $sellings = Selling::where('user_id', '=', auth()->user()->id)->orderBy('date', 'desc')->get();
     } else {
         $sellings = Selling::orderBy('surplus', 'desc')->get();
     }
@@ -74,11 +73,12 @@ Route::get('/sellings', function () {
 
 Route::get('/surveys', function () {
     if(auth()->user()->username !== 'admin') {
-        $surveys = Survey::where('outlet_id', '=', auth()->user()->id)->orderBy('date')->get();
+        $surveys = Survey::where('user_id', '=', auth()->user()->id)->orderBy('date', 'desc')->get();
     } else {
         $surveys = Survey::orderBy('rating', 'desc')->get();
     }
     return view('surveys', [
+        'username' => auth()->user()->username,
         'surveys' => $surveys,
         'title' => 'Surveys', 
         'active' => 'Surveys'

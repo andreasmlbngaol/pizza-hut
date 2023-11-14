@@ -16,14 +16,16 @@ class SellingFactory extends Factory
      */
     public function definition(): array
     {
-        $cost = mt_rand(10000000, 20000000);
-        $income = mt_rand(8000000, 30000000);
+        $delivery = mt_rand(300, 500);
+        $dine_in = mt_rand(300, 500);
+        $cost = $delivery * mt_rand(20000, 30000) + $dine_in * mt_rand(20000, 30000);
+        $income = $delivery * mt_rand(30000, 50000) + $dine_in * mt_rand(30000, 50000);
         $surplus = $income - $cost;
         return [
-            'date' => fake()->date(),
-            'outlet_id' => mt_rand(1, 500),
-            'delivery' => mt_rand(500, 1000),
-            'dine_in' => mt_rand(500, 1000),
+            'date' => fake()->dateTimeThisYear('-1 months'),
+            'user_id' => mt_rand(1, 35),
+            'delivery' => $delivery,
+            'dine_in' => $dine_in,
             'cost' => $cost,
             'income' => $income,
             'surplus' => $surplus

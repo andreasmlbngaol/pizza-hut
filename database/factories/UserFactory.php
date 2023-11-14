@@ -23,6 +23,8 @@ class UserFactory extends Factory
         return [
             'username' => fake()->unique()->userName(),
             'password' => static::$password ??= Hash::make('password'),
+            'area_id' => mt_rand(1, 98),
+            'name' => fake()->unique()->name()
         ];
     }
 

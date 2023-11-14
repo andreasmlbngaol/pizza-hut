@@ -3,8 +3,8 @@
 @section('main')
 
 <div class="col-lg-8 mt-3 mx-auto">
-<table class="table table-bordered text-center">
-    <thead>
+<table class="table table-bordered text-center table-hover">
+    <thead class="table-danger">
         <tr>
             <th>No</th>
             <th>Name</th>
@@ -20,9 +20,9 @@
     <td>{{ $loop->iteration }}</td>
     <td>{{ $employee->name }}</td>
     <td>{{ $employee->position->name }}</td>
-    <td>{{ $employee->outlet->name }}</td>
-    <td>{{ $employee->outlet->area->name }}</td>
-    <td>{{ $employee->outlet->area->district->name }}</td>
+    <td>{{ $employee->user->name }}</td>
+    <td>{{ $employee->user->area->name }}</td>
+    <td>{{ $employee->user->area->district->name }}</td>
 </tr>
 @endforeach
 </tbody>

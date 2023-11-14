@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Outlet;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -11,9 +11,9 @@ class Selling extends Model
     use HasFactory;
     
     protected $guarded = ['id'];
-    protected $with = ['outlet'];
+    protected $with = ['user'];
     
-    public function outlet() {
-        return $this->belongsTo(Outlet::class);
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

@@ -3,8 +3,8 @@
 @section('main')
 
 <div class="col-lg-8 mt-3 mx-auto">
-<table class="table table-bordered text-center">
-    <thead>
+<table class="table table-bordered text-center table-hover">
+    <thead class="table-danger">
         <tr>
             <th>No</th>
             <th>Outlet</th>
@@ -13,12 +13,12 @@
         </tr>
     </thead>
     <tbody>
-@foreach ($outlets as $outlet)
+@foreach ($users as $user)
 <tr>
     <td>{{ $loop->iteration }}</td>
-    <td>{{ $outlet->name }}</td>
-    <td>{{ $outlet->area->name }}</td>
-    <td>{{ $outlet->area->district->name }}</td>
+    <td>{{ $user->name }}</td>
+    <td>{{ $user->area->name }}</td>
+    <td>{{ $user->area->district->name }}</td>
 </tr>
 @endforeach
 </tbody>

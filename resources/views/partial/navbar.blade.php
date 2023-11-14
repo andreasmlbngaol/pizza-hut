@@ -25,12 +25,12 @@
           @endif
         </ul>
         @if (auth()->user())
-        <form action="/logout" method="post" class="{{ $active === 'Login' ? 'visually-hidden' : '' }}">
+        <form action="/logout" method="post">
           @csrf
-          <button type="submit" class="btn"><i class="bi bi-suit-heart me-1"></i>Logout</button>
+          <button type="submit" class="btn {{ $active === 'Login' ? 'visually-hidden' : '' }}">Logout</button>
         </form>
         @else
-          <a href="/login" class="btn"><i class="bi bi-suit-heart-fill me-1"></i>Login</a>
+          <a href="/login" class="btn {{ $active === 'Login' ? 'visually-hidden' : '' }}">Login</a>
         @endif
 
       </div>

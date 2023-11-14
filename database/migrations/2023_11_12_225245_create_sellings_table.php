@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sellings', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->foreignId('outlet_id');
+            $table->foreignId('user_id');
             $table->integer('delivery');
             $table->integer('dine_in');
             $table->integer('cost');

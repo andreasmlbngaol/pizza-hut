@@ -3,8 +3,8 @@
 @section('main')
 
 <div class="col-lg-8 mt-3 mx-auto">
-<table class="table table-bordered text-center">
-    <thead>
+<table class="table table-bordered text-center table-hover">
+    <thead class="table-danger">
         <tr>
             <th>No</th>
             <th>Date</th>
@@ -24,7 +24,7 @@
     <td>{{ $loop->iteration }}</td>
     <td>{{ $selling->date }}</td>
     @if ($username === 'admin')
-    <td>{{ $selling->outlet->name }}</td>
+    <td>{{ $selling->user->name }}</td>
     @endif
     <td>{{ $selling->delivery }}</td>
     <td>{{ $selling->dine_in }}</td>

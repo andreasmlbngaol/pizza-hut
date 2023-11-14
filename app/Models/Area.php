@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Outlet;
+use App\Models\User;
 use App\Models\District;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +18,7 @@ class Area extends Model
         return $this->belongsTo(District::class);
     }
 
-    public function outlets() {
-        return $this->hasMany(Outlet::class)->orderBy('name');
+    public function users() {
+        return $this->hasMany(User::class)->orderBy('name');
     }
 }

@@ -18,7 +18,7 @@ class EmployeeFactory extends Factory
     {
         return [
         'name' => fake()->name(),
-        'outlet_id' => mt_rand(1, 600),
+        'user_id' => mt_rand(1, 35),
         'position_id' => mt_rand(1, 9),
         ];
     }

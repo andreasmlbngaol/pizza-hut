@@ -17,9 +17,9 @@ class SurveyFactory extends Factory
     public function definition(): array
     {
         return [
-            'outlet_id' => mt_rand(1, 600),
+            'user_id' => mt_rand(1, 35),
             'date' => fake()->date(),
-            'rating' => mt_rand(0,10),
+            'rating' => mt_rand() / mt_getrandmax() * 10,
             'description' => fake()->sentence(mt_rand(10, 15))
         ];
     }

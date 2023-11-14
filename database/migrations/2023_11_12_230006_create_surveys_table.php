@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('outlet_id');
+            $table->foreignId('user_id');
             $table->date('date');
-            $table->smallInteger('rating');
+            $table->float('rating', 4, 2, true);
             $table->text('description');
             $table->timestamps();
         });

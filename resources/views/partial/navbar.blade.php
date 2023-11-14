@@ -1,34 +1,38 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Navbar</a>
+<nav class="navbar navbar-expand-lg bg-danger mb-3">
+    <div class="container">
+      <a class="navbar-brand" href="/"><img src="{{ asset('favicon.ico') }}" alt="" style="max-width: 40px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link {{ $active === 'Outlets' ? 'active' : '' }}" href="/outlets">Outlets</a>
+          </li>
+          @if (auth()->user())
+          <li class="nav-item">
+            <a class="nav-link {{ $active === 'Employees' ? 'active' : '' }} {{ $active === 'Login' ? 'visually-hidden' : '' }}" href="/employees">Employees</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/outlets">Outlet</a>
+            <a class="nav-link {{ $active === 'Recipes' ? 'active' : '' }} {{ $active === 'Login' ? 'visually-hidden' : '' }}" href="/recipes">Recipes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/employees">Employees</a>
+            <a class="nav-link {{ $active === 'Sellings' ? 'active' : '' }} {{ $active === 'Login' ? 'visually-hidden' : '' }}" href="/sellings">Selling Report</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/recipes">Recipes</a>
+            <a class="nav-link {{ $active === 'Surveys' ? 'active' : '' }} {{ $active === 'Login' ? 'visually-hidden' : '' }}" href="/surveys">Survey Report</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/sellings">Selling Report</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/surveys">Survey Report</a>
-          </li>
+          @endif
         </ul>
-        <form action="/logout" method="post">
+        @if (auth()->user())
+        <form action="/logout" method="post" class="{{ $active === 'Login' ? 'visually-hidden' : '' }}">
           @csrf
-          <button type="submit" class="dropdown-item"><i class="bi bi-suit-heart me-1"></i>Logout</button>
+          <button type="submit" class="btn"><i class="bi bi-suit-heart me-1"></i>Logout</button>
         </form>
+        @else
+          <a href="/login" class="btn"><i class="bi bi-suit-heart-fill me-1"></i>Login</a>
+        @endif
+
       </div>
     </div>
 </nav>

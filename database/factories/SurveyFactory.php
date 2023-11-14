@@ -20,7 +20,7 @@ class SurveyFactory extends Factory
             'outlet_id' => mt_rand(1, 600),
             'date' => fake()->date(),
             'rating' => mt_rand(0,10),
-            'description' => fake()->paragraph(mt_rand(50, 100))
+            'description' => fake()->sentence(mt_rand(10, 15))
         ];
     }
 }

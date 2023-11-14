@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('area_id');
             $table->string('name');
-            $table->string('username');
             $table->timestamps();
         });
     }

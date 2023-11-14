@@ -8,7 +8,9 @@
         <tr>
             <th>No</th>
             <th>Date</th>
+            @if ($username === 'admin')
             <th>Outlet</th>
+            @endif
             <th>Delivery</th>
             <th>Dine In</th>
             <th>Cost</th>
@@ -21,7 +23,9 @@
 <tr>
     <td>{{ $loop->iteration }}</td>
     <td>{{ $selling->date }}</td>
+    @if ($username === 'admin')
     <td>{{ $selling->outlet->name }}</td>
+    @endif
     <td>{{ $selling->delivery }}</td>
     <td>{{ $selling->dine_in }}</td>
     <td>Rp.{{ number_format($selling->cost, 0, ',', '.') }}</td>

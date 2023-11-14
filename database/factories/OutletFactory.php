@@ -18,7 +18,6 @@ class OutletFactory extends Factory
     {
         return [
             'name' => fake()->streetName(),
-            'username' => fake()->unique()->userName(),
             'area_id' => mt_rand(1, 98)
         ];
     }

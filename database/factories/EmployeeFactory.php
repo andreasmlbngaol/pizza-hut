@@ -19,7 +19,7 @@ class EmployeeFactory extends Factory
         return [
         'name' => fake()->name(),
         'outlet_id' => mt_rand(1, 600),
-        'position_id' => mt_rand(1, 10),
+        'position_id' => mt_rand(1, 9),
         ];
     }
 }

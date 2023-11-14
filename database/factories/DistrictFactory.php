@@ -17,7 +17,7 @@ class DistrictFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->state(), //generate random sentence dengan random kata minimal 2 dan maks 6
+            'name' => fake()->unique()->state(), //generate random sentence dengan random kata minimal 2 dan maks 6
         ];
     }
 }

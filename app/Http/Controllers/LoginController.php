@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index() {
-        return view('login.index');
+        return view('login.index', [
+            'title' => 'Login', 
+            'active' => 'Login'
+        ]);
     }
 
     public function authenticate(Request $request) {
         $credentials = $request->validate([
-            'username' => 'required|min:6',
+            'username' => 'required',
             'password' => 'required'
         ]);
 

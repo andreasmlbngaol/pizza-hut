@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
-use App\Http\Requests\StoreEmployeeRequest;
-use App\Http\Requests\UpdateEmployeeRequest;
+use App\Models\Position;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +14,16 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        if(auth()->user()->username !== 'admin') {
+            $employees = Employee::where('user_id', '=', auth()->user()->id)->orderBy('name')->get();
+        } else {
+            $employees = Employee::orderBy('name')->get();
+        }
+        return view('employees.index', [
+            'employees' => $employees,
+            'title' => 'Employees', 
+            'active' => 'Employees'
+        ]);
     }
 
     /**
@@ -21,13 +31,18 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create', [
+            'title' => 'Add Employee',
+            'active' => 'Employees',
+            'users' => User::all(),
+            'positions' => Position::all()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEmployeeRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -51,7 +66,7 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEmployeeRequest $request, Employee $employee)
+    public function update(Request $request, Employee $employee)
     {
         //
     }

@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Selling;
-use App\Http\Requests\StoreSellingRequest;
-use App\Http\Requests\UpdateSellingRequest;
+use Illuminate\Http\Request;
 
 class SellingController extends Controller
 {
@@ -13,7 +12,17 @@ class SellingController extends Controller
      */
     public function index()
     {
-        //
+        if(auth()->user()->username !== 'admin') {
+            $sellings = Selling::where('user_id', '=', auth()->user()->id)->orderBy('date', 'desc')->get();
+        } else {
+            $sellings = Selling::orderBy('surplus', 'desc')->get();
+        }
+        return view('sellings.index', [
+            'username' => auth()->user()->username,
+            'sellings' => $sellings,
+            'title' => 'Sellings', 
+            'active' => 'Sellings'
+        ]);
     }
 
     /**
@@ -27,7 +36,7 @@ class SellingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSellingRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -51,7 +60,7 @@ class SellingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSellingRequest $request, Selling $selling)
+    public function update(Request $request, Selling $selling)
     {
         //
     }

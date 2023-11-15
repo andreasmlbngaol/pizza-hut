@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Survey;
-use App\Http\Requests\StoreSurveyRequest;
-use App\Http\Requests\UpdateSurveyRequest;
+use Illuminate\Http\Request;
 
 class SurveyController extends Controller
 {
@@ -13,7 +12,17 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        //
+        if(auth()->user()->username !== 'admin') {
+            $surveys = Survey::where('user_id', '=', auth()->user()->id)->orderBy('date', 'desc')->get();
+        } else {
+            $surveys = Survey::orderBy('rating', 'desc')->get();
+        }
+        return view('surveys.index', [
+            'username' => auth()->user()->username,
+            'surveys' => $surveys,
+            'title' => 'Surveys', 
+            'active' => 'Surveys'
+        ]);
     }
 
     /**
@@ -27,7 +36,7 @@ class SurveyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSurveyRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -51,7 +60,7 @@ class SurveyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSurveyRequest $request, Survey $survey)
+    public function update(Request $request, Survey $survey)
     {
         //
     }

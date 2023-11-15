@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
-use App\Http\Requests\StoreRecipeRequest;
-use App\Http\Requests\UpdateRecipeRequest;
+use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
@@ -13,7 +12,11 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        return view('recipes.index', [
+            'recipes' => Recipe::orderBy('name')->get(),
+            'title' => 'Recipes', 
+            'active' => 'Recipes'
+        ]);
     }
 
     /**
@@ -27,7 +30,7 @@ class RecipeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRecipeRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +38,7 @@ class RecipeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Recipe $recipe)
+    public function show(Recipe $recipes)
     {
         //
     }
@@ -43,7 +46,7 @@ class RecipeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Recipe $recipe)
+    public function edit(Recipe $recipes)
     {
         //
     }
@@ -51,7 +54,7 @@ class RecipeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRecipeRequest $request, Recipe $recipe)
+    public function update(Request $request, Recipe $recipes)
     {
         //
     }
@@ -59,7 +62,7 @@ class RecipeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Recipe $recipe)
+    public function destroy(Recipe $recipes)
     {
         //
     }

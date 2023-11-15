@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
+use App\Models\User;
+use App\Models\District;
 use App\Models\Employee;
 use App\Models\Position;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -35,6 +37,8 @@ class EmployeeController extends Controller
             'title' => 'Add Employee',
             'active' => 'Employees',
             'users' => User::all(),
+            'areas' => Area::all(),
+            'districts' => District::all(),
             'positions' => Position::all()
         ]);
     }

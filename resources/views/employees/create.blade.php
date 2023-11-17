@@ -2,7 +2,7 @@
 @section('main')
 <div class="row justify-content-center mt-5">
     <div class="col-sm-4">
-        <form method="post" action="/dashboard/posts">
+        <form method="post" action="/employees">
         @csrf
         <div class="form-floating mb-3">
             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name" value="{{ old('name') }}"required autofocus>
@@ -51,7 +51,7 @@
             </div>
             @enderror
         </div>
-        <div class="mb-3 visually-hidden" id="area_div">
+        <div class="mb-3" id="area_div">
             <label for="area" class="visually-hidden" id="area_label">Area</label>
             <select class="form-select @error('area_id') is-invalid @enderror" id="area" name="area_id" required>
                 <option value="0" selected>Area</option>
@@ -71,7 +71,7 @@
             </div>
             @enderror
         </div>
-        <div class="mb-3 visually-hidden" id="user_div">
+        <div class="mb-3" id="user_div">
             <label for="user" class="visually-hidden" id="user_label">Outlet</label>
             <select class="form-select @error('user_id') is-invalid @enderror" id="user" name="user_id" required>
                 <option value="0" selected>Outlet</option>
@@ -104,7 +104,6 @@
     });
     $('#district').change(function() {
         $('#district_label').removeClass("visually-hidden");
-        $('#area_div').removeClass("visually-hidden");
         area_value = $('#area').val();
         if(area_value != 0) {
             $('#area').val("0").change();
@@ -120,7 +119,6 @@
     });
     $('#area').change(function() {
         $('#area_label').removeClass("visually-hidden");
-        $('#user_div').removeClass("visually-hidden");
         $('#user').val("0").change();
         user_value = $('#user').val();
         if(user_value != 0) {

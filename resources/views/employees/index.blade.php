@@ -2,7 +2,18 @@
 
 @section('main')
 
+@if (session()->has('success'))
+<div class="container">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+@endif
 <div class="col-lg-8 mt-3 mx-auto">
+@if ($user === 'admin')
+<a href="/employees/create" class="btn btn-success my-2">Add New Employee</a>
+@endif
 <table class="table table-bordered text-center table-hover">
     <thead class="table-danger">
         <tr>

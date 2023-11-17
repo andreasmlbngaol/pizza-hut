@@ -15,7 +15,8 @@ class RecipeController extends Controller
         return view('recipes.index', [
             'recipes' => Recipe::orderBy('name')->get(),
             'title' => 'Recipes', 
-            'active' => 'Recipes'
+            'active' => 'Recipes',
+            'user' => auth()->user()->username
         ]);
     }
 
@@ -24,7 +25,13 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        if(auth()->user()->username !== 'admin') {
+            return redirect('/recipes');
+        }
+        return view('recipes.create', [
+            'title' => 'Add Recipe',
+            'active' => 'Recipes',
+        ]);
     }
 
     /**
@@ -32,7 +39,13 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'making' => 'required',
+            'serving' => 'required'
+        ]);
+        Recipe::create($validatedData);
+        return redirect('/recipes')->with('success', 'Recipe added');
     }
 
     /**

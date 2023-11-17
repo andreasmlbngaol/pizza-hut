@@ -24,7 +24,8 @@ class EmployeeController extends Controller
         return view('employees.index', [
             'employees' => $employees,
             'title' => 'Employees', 
-            'active' => 'Employees'
+            'active' => 'Employees',
+            'user' => auth()->user()->username
         ]);
     }
 
@@ -33,6 +34,9 @@ class EmployeeController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->username !== 'admin') {
+            return redirect('/employees');
+        }
         return view('employees.create', [
             'title' => 'Add Employee',
             'active' => 'Employees',
@@ -48,7 +52,13 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'position_id' => 'required',
+            'user_id' => 'required'
+        ]);
+        Employee::create($validatedData);
+        return redirect('/employees')->with('success', 'Employee added');
     }
 
     /**

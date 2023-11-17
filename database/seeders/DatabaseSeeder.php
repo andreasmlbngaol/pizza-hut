@@ -302,7 +302,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Delivery Driver'],
             ['name' => 'Cook'],
             ['name' => 'Shift Manager'],
-            ['name' => 'Assistant Manager'],
+            ['name' => 'Outlet Manager'],
             ['name' => 'General Manager'],
             ['name' => 'Area Coach'],
             ['name' => 'Above Restaurant Leader']

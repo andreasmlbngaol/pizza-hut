@@ -1,8 +1,19 @@
 @extends('layouts.main')
 
 @section('main')
+@if (session()->has('success'))
+<div class="container">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+@endif
 
 <div class="col-lg-8 mt-3 mx-auto">
+@if ($username !== 'admin')
+<a href="/sellings/create" class="btn btn-success my-2">Report Selling</a>
+@endif
 <table class="table table-bordered text-center table-hover">
     <thead class="table-danger">
         <tr>

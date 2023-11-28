@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-slate-700 mb-3">
+<nav class="navbar navbar-expand-lg bg-danger mb-3">
     <div class="container">
       <a class="navbar-brand" href="/"><img src="{{ asset('favicon.ico') }}" alt="" style="max-width: 40px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

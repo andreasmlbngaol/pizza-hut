@@ -17,7 +17,6 @@
         display: none; 
       }
     </style>
-    {{-- @vite('resources/css/app.css') --}}
 </head>
 <body>
     @include('partial.navbar')

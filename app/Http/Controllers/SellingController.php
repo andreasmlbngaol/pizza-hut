@@ -30,7 +30,14 @@ class SellingController extends Controller
      */
     public function create()
     {
-        //
+        if(auth()->user()->username === 'admin') {
+            return redirect('/sellings');
+        }
+        return view('sellings.create', [
+            'title' => 'Report Selling',
+            'active' => 'Sellings',
+            'user_id' => auth()->user()->id
+        ]);
     }
 
     /**
@@ -38,7 +45,17 @@ class SellingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'user_id' => 'min:1',
+            'date' => 'required',
+            'delivery' => 'required',
+            'dine_in' => 'required',
+            'cost' => 'required',
+            'income' => 'required'
+        ]);
+        $validatedData['surplus'] = (int) $validatedData['income'] - (int) $validatedData['cost'];
+        Selling::create($validatedData);
+        return redirect('/sellings')->with('success', 'Selling\'s reported');
     }
 
     /**

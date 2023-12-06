@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('main')
 <div class="row justify-content-center mt-5">
-    <div class="col-sm-4">
+    <div class="col-sm-5">
         <form method="post" action="/surveys">
         @csrf
         <div class="mb-3">

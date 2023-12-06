@@ -17,3 +17,30 @@
 .active {
     color: white !important;
 }
+
+.nav-link {
+    transition: all 0.2s;
+    font: semibold;
+}
+
+.nav-link:hover {
+    border-bottom : 2px solid tomato;
+}
+
+.btn {
+    transition: all 0.2s;
+    font: semibold;
+}
+
+.btn:hover {
+    border-bottom : 2px solid tomato;
+}
+
+.background {
+    width:100%;
+    height:88vh;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

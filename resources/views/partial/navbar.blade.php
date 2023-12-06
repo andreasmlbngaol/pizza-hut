@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<nav class="navbar navbar-expand-lg bg-danger mb-3">
-=======
 <nav class="navbar navbar-expand-lg bg-light " style="background-image: url({{ asset('img/bg-kertas.jpg') }})">
->>>>>>> 2d9360c77f9a617b76cbc79946a9f53d1819e6ad
     <div class="container">
       <a class="navbar-brand" href="/"><img src="{{ asset('img/logo-ph.png') }}" alt="" style="max-width: 60px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
